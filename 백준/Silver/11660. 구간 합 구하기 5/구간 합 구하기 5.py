@@ -19,3 +19,9 @@ for _ in range(m):                                                      # 구간
     x1, y1, x2, y2 = map(int, input().split())
     result = D[x2][y2] - D[x1-1][y2] - D[x2][y1-1] + D[x1-1][y1-1]              
     print(result)
+
+
+"""
+합배열을 따로 저장해놓음으로서 3중 반복문이 2중 반복문으로 바뀜. O(n^3)에서 O(n^2)이 되면서 시간 복잡도가 좋아짐
+입력 input()으로 할 경우 시간초과 발생함
+"""
