@@ -1,16 +1,16 @@
 import sys
 input = sys.stdin.readline
-N, M = map(int, input().split())
-numbers = list(map(int, input().split()))
-sum = [0]
+N, M = map(int, input().split())                                # N : 수의 개수, M : 질의 수
+numbers = list(map(int, input().split()))                       # 주어진 수들 저장
+sum = [0]                                                       # 합 배열
 temp = 0
 
 for i in numbers:
     temp += i
-    sum.append(temp)
+    sum.append(temp)                                            # 합 배열 생성하기
     
 for i in range(M):
-    s, e = map(int, input().split())
+    s, e = map(int, input().split())                            # 질의 구간의 처음과 끝 받아오기
     print(sum[e] - sum[s-1])
 
 """
