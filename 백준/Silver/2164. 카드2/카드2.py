@@ -1,6 +1,6 @@
 from collections import deque                                             # 파이썬에서는 큐를 deque로 구현***
 N = int(input())                                                          # N = 카드의 개수
-Q = deque()                                                               # deque 생성
+Q = deque()                                                               
 
 for i in range(1, N+1):                                                   # 카드의 개수만큼 반복
     Q.append(i)                                                           # 큐에 카드 저장
