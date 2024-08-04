@@ -1,4 +1,14 @@
-N = list(input())
+N = list(input())                   #리스트로 변환 
 
-A = sorted(N, reverse=True)
-print(''.join(A))
+A = sorted(N, reverse=True)         #리스트 정렬 후에는 반환 값이 없음. 정렬된 리스트를 변수에 할당해야함. 이때 sorted()함수는 정렬된 새로운 리스트 반환.
+                                    # A = N 도 가능
+print(''.join(A))                   #정렬된 리스트를 다시 문자열로 결합하여 출력해야함
+
+
+"""
+리스트로 변환
+1. list(map(int, input().split()))
+    입력된 문자열을 공백 기준으로 분리하여 문자열의 리스트로 변환 후, 각 요소를 다시 int 타입으로 변환. 이후 각 객체를 리스트로 변환
+2. list(input())
+    입력된 문자열을 문자 하나하나로 나누어 각각을 리스트의 요소로 저장
+"""
