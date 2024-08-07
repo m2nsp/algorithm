@@ -1,8 +1,8 @@
 import sys
 input = sys.stdin.readline
-result = 0
+result = 0                                                # swap 결과값 저장할 변수
 
-def merge_sort(s, e):
+def merge_sort(s, e):                                     # 병합 정렬 수행 함수
     global result
 
     if e-s < 1:
