@@ -5,7 +5,7 @@ input = sys.stdin.readline
 min, max = map(int, input().split())                                # 최솟값, 최댓값 읽어오기
 
 S = []                                                              # 제곱수들 저장할 리스트
-for i in range(2, int(math.sqrt(max)) + 1):
+for i in range(2, int(math.sqrt(max)) + 1):                         # sqrt() 함수는 실수를 반환함!! 주의
     S.append(i * i)
  
 A = [1] * (max - min + 1)                                           # A 리스트는 min_value에서 max_value까지의 범위를 다룸
