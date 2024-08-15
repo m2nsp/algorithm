@@ -11,7 +11,7 @@ for i in range(2, int(math.sqrt(len(A)) + 1)):        #제곱근까지만 수행
     for j in range(i+i, len(A), i):
         A[j] = 0
         
-cnt = 0
+cnt = 0                                                # 거의 소수의 개수 저장하는 변수
 
 for i in range(2, 10000001):
     if A[i]!=0:
@@ -22,3 +22,7 @@ for i in range(2, 10000001):
             temp = temp * A[i]
             
 print(cnt)
+
+"""
+교재 참고함 - 직접 인덱스를 통해 바로 계산하는 방법인듯
+"""
