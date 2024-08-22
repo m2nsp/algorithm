@@ -1,5 +1,5 @@
 from collections import deque
-N, M = map(int, input().split())
+N, M = map(int, input().split())                        # N: , M: 
 A = [[]for _ in range(N+1)]
 indegree = [0]*(N+1)
 
