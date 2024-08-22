@@ -1,5 +1,5 @@
-N = int(input())
-M = int(input())
+N = int(input())                                                # N : 
+M = int(input())                                                # M : 
 dosi = [[0 for j in range(N+1)] for i in range(N+1)]
 
 def find(a):
