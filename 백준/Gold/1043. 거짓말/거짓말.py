@@ -1,4 +1,4 @@
-N, M = map(int, input().split())
+N, M = map(int, input().split())                            # N: , M: 
 trueP = list(map(int, input().split()))
 T = trueP[0]
 del trueP[0]
