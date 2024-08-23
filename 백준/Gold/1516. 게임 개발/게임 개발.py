@@ -1,7 +1,7 @@
 from collections import deque
 
-N = int(input())
-A = [[] for _ in range(N+1)]
+N = int(input())                                            # N : 
+A = [[] for _ in range(N+1)]                                # A : 
 indegree = [0]*(N+1)
 selfBuild = [0]*(N+1)
 
