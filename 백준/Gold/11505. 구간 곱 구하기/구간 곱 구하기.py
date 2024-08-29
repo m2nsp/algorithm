@@ -1,7 +1,7 @@
 import sys
 input = sys.stdin.readline
 
-MOD = 1000000007  # 큰 수로 나누기 위한 MOD 값 설정
+MOD = 1000000007  # 큰 수로 나누기 위한 MOD 값 설정(세그먼트 트리에서 구간 곱을 계산할 때 'mod' 연산을 추가하여 숫자가 지나치게 커지는 것을 방지)
 
 # 세그먼트 트리 생성
 def build_segment_tree(arr, seg_tree, node, start, end):
@@ -48,12 +48,12 @@ build_segment_tree(A, seg_tree, 1, 0, N - 1)
 output = []
 for _ in range(M + K):
     a, b, c  = map(int, input().split())
-    # 값 변경
+    # a==1 : 값 변경
     if a == 1:
         update(seg_tree, 1, 0, N - 1, b - 1, c)
-    # 구간 곱 출력
+    # a == 2 : 구간 곱 출력
     else:
         output.append(str(range_multiple(seg_tree, 1, 0, N - 1, b - 1, c - 1)))
 
-# 한 번에 출력
+# 한 번에 출력 -- 시간 초과 방지
 sys.stdout.write("\n".join(output) + "\n")
