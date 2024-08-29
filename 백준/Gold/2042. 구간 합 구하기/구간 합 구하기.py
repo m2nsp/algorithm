@@ -35,7 +35,7 @@ def update(seg_tree, node, start, end, idx, value):
         seg_tree[node] = seg_tree[2*node] + seg_tree[2*node+1]
 
 #입력 받기
-N, M, K = map(int, input().split())
+N, M, K = map(int, input().split())        # N: 수의 개수, M: 수의 변경이 일어나는 횟수, K: 구간합 구하는 횟수
 A = [int(input()) for _ in range(N)]
 
 #세그먼트 트리 초기화
@@ -47,7 +47,7 @@ for _ in range(M+K):
     a, b, c  = map(int, input().split())
     # 값 변경
     if a==1:
-        update(seg_tree, 1, 0, N-1, b-1, c)
+        update(seg_tree, 1, 0, N-1, b-1, c)        # 인덱스 주의
     # 구간 합 출력
     else:
         print(range_sum(seg_tree, 1, 0, N-1, b-1, c-1))
