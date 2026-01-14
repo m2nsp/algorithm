@@ -1,13 +1,16 @@
-import sys
-input = sys.stdin.readline
-N = int(input())    # 구하고자 하는 수
-D = [0]*(N+1)
-D[1] = 0    # 1일때는 연산 필요없음
+def min_operations_to_one(N):
+  dp = [0] * (N+1)
+  dp[1] = 0
+  
+  for i in range(1, N+1):
+    if i > 1:
+        dp[i] = dp[i-1]+1
+        if i >= 2 and i % 2 == 0:
+            dp[i] = min(dp[i], dp[i//2] + 1)
+        if i >= 3 and i % 3 == 0:
+            dp[i] = min(dp[i], dp[i//3] + 1)
+  return dp[i]
 
-for i in range(2, N+1):
-    D[i] = D[i-1]+1   
-    if i%2 == 0:
-        D[i] = min(D[i], D[i//2]+1)    # 나누기 2연산
-    if i%3==0:
-        D[i] = min(D[i], D[i//3]+1)    # 나누기 3연산
-print(D[N])
+n = int(input())
+ans = min_operations_to_one(n)
+print(ans)
