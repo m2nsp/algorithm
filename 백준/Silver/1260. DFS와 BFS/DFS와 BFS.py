@@ -1,43 +1,52 @@
-from collections import deque
-import sys
-input = sys.stdin.readline
-N, M , S = map(int, input().split())            # N:노드의 수/M:에지의 수/S:시작점
-A = [[]for _ in range(N+1)]                     # 인접 리스트 생성
+from collections import deque, defaultdict
+
+# 1. 입력받기
+N, M, V = map(int, input().split())
+
+# 2. 그래프 구현
+graph = defaultdict(list)
 
 for _ in range(M):
-    u, v = map(int, input().split())
-    A[u].append(v)                              # 인접 리스트 생성
-    A[v].append(u)
+    k, e = map(int, input().split())
+    graph[k].append(e)
+    graph[e].append(k)
     
-for i in range(N+1):
-    A[i].sort()                                 # 방문 가능한 노드가 여러 개일 경우 노드 번호가 작은 것을 방문
+# 4. 번호가 작은 것부터 출력 -> 정렬
+for v in range(1, N+1):
+    graph[v].sort()
+
+# 3. DFS
+def dfs(graph, V):
+    s = [V]
+    visited = set([])
     
-def dfs(v):                                     # dfs로 탐색 함수
-    print(v, end=' ')
-    visited[v]=True
-    for i in A[v]:
-        if not visited[i]:
-            dfs(i)
+    while s:
+        cur = s.pop()
+        if cur in visited:
+            continue
+        visited.add(cur)
+        print(cur, end=' ')
         
-visited = [False]*(N+1)                        # 방문기록 저장 리스트 초기화
-dfs(S)
+        for next in reversed(graph[cur]):  # 오름차순으로 출력 -> dfs는 스택이므로 반대로 넣기
+            s.append(next)
+    return None
 
-def bfs(v):                                    # bfs로 탐색 함수
-    queue = deque()
-    queue.append(v)
-    visited[v] = True
-    while queue:
-        current = queue.popleft()
-        print(current, end=' ')
-        for i in A[current]:
-            if not visited[i]:
-                visited[i] = True
-                queue.append(i)
-                
+# 4. BFS
+def bfs(graph, V):
+    q = deque([V])
+    visited = set([V])
+    
+    while q:
+        cur = q.popleft()
+        print(cur, end=' ')
+        
+        for next in graph[cur]:
+            if next in visited:
+                continue
+            visited.add(next)
+            q.append(next)
+    return None
+    
+dfs(graph, V)
 print()
-visited = [False]*(N+1)                        # 방문기록 저장 리스트 다시 초기화해야 됨
-bfs(S)
-
-
-
-# bfs는 주로 큐를 사용하여 구현함
+bfs(graph, V)
